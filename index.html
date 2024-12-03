@@ -25,7 +25,7 @@
       background: #fff;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       padding: 20px;
-      border-radius: 10px;
+      border-radius: 20px; /* Rounded box */
       width: 300px;
       text-align: center;
     }
@@ -40,7 +40,7 @@
       margin-top: 5px;
       margin-bottom: 15px;
       border: 1px solid #ccc;
-      border-radius: 5px;
+      border-radius: 15px; /* Rounded inputs */
       font-size: 16px;
     }
     .buttons {
@@ -54,17 +54,28 @@
       font-size: 16px;
       font-weight: bold;
       color: #fff;
-      background-color: #007bff;
       border: none;
-      border-radius: 5px;
+      border-radius: 15px; /* Rounded buttons */
       cursor: pointer;
       transition: background-color 0.3s;
     }
-    button:hover {
-      background-color: #0056b3;
+    button.add {
+      background-color: #28a745; /* Green */
     }
-    button:active {
-      background-color: #004085;
+    button.add:hover {
+      background-color: #218838;
+    }
+    button.add:active {
+      background-color: #1e7e34;
+    }
+    button.subtract {
+      background-color: #dc3545; /* Red */
+    }
+    button.subtract:hover {
+      background-color: #c82333;
+    }
+    button.subtract:active {
+      background-color: #bd2130;
     }
     #result {
       font-size: 18px;
@@ -84,8 +95,8 @@
     <input type="number" id="changeAmount" placeholder="Enter amount to add/subtract">
 
     <div class="buttons">
-      <button onclick="updateDamage('add')">Add</button>
-      <button onclick="updateDamage('subtract')" style="background-color: #dc3545;">Subtract</button>
+      <button class="add" onclick="updateDamage('add')">Add</button>
+      <button class="subtract" onclick="updateDamage('subtract')">Subtract</button>
     </div>
 
     <div id="result"></div>
