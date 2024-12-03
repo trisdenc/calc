@@ -3,28 +3,93 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Damage Calculator</title>
+  <title>Damage Tracker</title>
   <style>
-    body { font-family: Arial, sans-serif; padding: 20px; text-align: center; }
-    input, button { margin: 10px; padding: 10px; font-size: 16px; }
-    #result { font-size: 20px; margin-top: 10px; }
-    .buttons { margin-top: 20px; }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      color: #444;
+      margin-bottom: 20px;
+    }
+    .container {
+      background: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      width: 300px;
+      text-align: center;
+    }
+    label {
+      display: block;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    button {
+      flex: 1;
+      padding: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff;
+      background-color: #007bff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    button:active {
+      background-color: #004085;
+    }
+    #result {
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 20px;
+      color: #28a745;
+    }
   </style>
 </head>
 <body>
-  <h1>Damage Tracker</h1>
-  <label for="currentDamage">Current Damage:</label>
-  <input type="number" id="currentDamage" placeholder="Enter current damage">
+  <div class="container">
+    <h1>Damage Tracker</h1>
+    <label for="currentDamage">Current Damage:</label>
+    <input type="number" id="currentDamage" placeholder="Enter current damage">
 
-  <label for="changeAmount">Change Amount:</label>
-  <input type="number" id="changeAmount" placeholder="Enter amount to add/subtract">
+    <label for="changeAmount">Change Amount:</label>
+    <input type="number" id="changeAmount" placeholder="Enter amount to add/subtract">
 
-  <div class="buttons">
-    <button onclick="updateDamage('add')">Add</button>
-    <button onclick="updateDamage('subtract')">Subtract</button>
+    <div class="buttons">
+      <button onclick="updateDamage('add')">Add</button>
+      <button onclick="updateDamage('subtract')" style="background-color: #dc3545;">Subtract</button>
+    </div>
+
+    <div id="result"></div>
   </div>
-
-  <div id="result"></div>
 
   <script>
     function updateDamage(operation) {
@@ -34,6 +99,7 @@
       // Check if inputs are valid numbers
       if (isNaN(currentDamage) || isNaN(changeAmount)) {
         document.getElementById('result').innerText = 'Please enter valid numbers.';
+        document.getElementById('result').style.color = '#dc3545'; // Red color for errors
         return;
       }
 
@@ -48,6 +114,7 @@
       // Display the updated damage and update the input field
       document.getElementById('currentDamage').value = updatedDamage;
       document.getElementById('result').innerText = `Updated Damage: ${updatedDamage}`;
+      document.getElementById('result').style.color = '#28a745'; // Green color for success
     }
   </script>
 </body>
