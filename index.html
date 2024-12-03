@@ -98,33 +98,41 @@
     <input type="number" id="changeAmount" placeholder="Enter amount to add/subtract">
 
     <div class="buttons">
-      <button class="damage" onclick="updateDamage('add')">Damage</button>
-      <button class="heal" onclick="updateDamage('subtract')">Heal</button>
+      <button class="damage" onclick="updateDamage('damage')">Damage</button>
+      <button class="heal" onclick="updateDamage('heal')">Heal</button>
     </div>
 
     <div id="result"></div>
   </div>
 
   <script>
-    function updateDamage(operation) {
+    function updateDamage(action) {
       const currentDamage = parseFloat(document.getElementById('currentDamage').value);
       const changeAmount = parseFloat(document.getElementById('changeAmount').value);
 
-      // Check if inputs are valid numbers
+      // Validate inputs
       if (isNaN(currentDamage) || isNaN(changeAmount)) {
         document.getElementById('result').innerText = 'Please enter valid numbers.';
-        document.getElementById('result').style.color = '#dc3545'; // Red color for errors
+        document.getElementById('result').style.color = '#dc3545'; // Red for errors
         return;
       }
 
-      // Perform the chosen operation
-      let updatedDamage;
-      if (operation === 'add') {
-        updatedDamage = currentDamage + changeAmount;
-      } else if (operation === 'subtract') {
-        updatedDamage = currentDamage - changeAmount;
+      let updatedDamage = currentDamage;
+
+      // Perform action based on button clicked
+      if (action === 'damage') {
+        updatedDamage += changeAmount; // Add damage
+        document.getElementById('result').style.color = '#dc3545'; // Red for damage
+      } else if (action === 'heal') {
+        updatedDamage -= changeAmount; // Subtract damage (heal)
+        if (updatedDamage < 0) updatedDamage = 0; // Prevent negative damage
+        document.getElementById('result').style.color = '#28a745'; // Green for heal
       }
 
-      // Display the updated damage and update the input field
+      // Update the inputs and display the result
       document.getElementById('currentDamage').value = updatedDamage;
-      document.getElementById('result').inner
+      document.getElementById('result').innerText = `Updated Damage: ${updatedDamage}`;
+    }
+  </script>
+</body>
+</html>
