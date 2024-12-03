@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Simple Calculator</title>
+  <title>Damage Calculator</title>
   <style>
     body { font-family: Arial, sans-serif; padding: 20px; text-align: center; }
     input, button { margin: 10px; padding: 10px; font-size: 16px; }
@@ -12,38 +12,42 @@
   </style>
 </head>
 <body>
-  <h1>Simple Calculator</h1>
-  <input type="number" id="num1" placeholder="Enter first number">
-  <input type="number" id="num2" placeholder="Enter second number">
-  
+  <h1>Damage Tracker</h1>
+  <label for="currentDamage">Current Damage:</label>
+  <input type="number" id="currentDamage" placeholder="Enter current damage">
+
+  <label for="changeAmount">Change Amount:</label>
+  <input type="number" id="changeAmount" placeholder="Enter amount to add/subtract">
+
   <div class="buttons">
-    <button onclick="calculate('add')">Add</button>
-    <button onclick="calculate('subtract')">Subtract</button>
+    <button onclick="updateDamage('add')">Add</button>
+    <button onclick="updateDamage('subtract')">Subtract</button>
   </div>
-  
+
   <div id="result"></div>
 
   <script>
-    function calculate(operation) {
-      const num1 = parseFloat(document.getElementById('num1').value);
-      const num2 = parseFloat(document.getElementById('num2').value);
+    function updateDamage(operation) {
+      const currentDamage = parseFloat(document.getElementById('currentDamage').value);
+      const changeAmount = parseFloat(document.getElementById('changeAmount').value);
 
       // Check if inputs are valid numbers
-      if (isNaN(num1) || isNaN(num2)) {
+      if (isNaN(currentDamage) || isNaN(changeAmount)) {
         document.getElementById('result').innerText = 'Please enter valid numbers.';
         return;
       }
 
       // Perform the chosen operation
-      let result;
+      let updatedDamage;
       if (operation === 'add') {
-        result = num1 + num2;
+        updatedDamage = currentDamage + changeAmount;
       } else if (operation === 'subtract') {
-        result = num1 - num2;
+        updatedDamage = currentDamage - changeAmount;
       }
 
-      // Display the result
-      document.getElementById('result').innerText = `Result: ${result}`;
+      // Display the updated damage and update the input field
+      document.getElementById('currentDamage').value = updatedDamage;
+      document.getElementById('result').innerText = `Updated Damage: ${updatedDamage}`;
     }
   </script>
 </body>
