@@ -62,23 +62,23 @@
       cursor: pointer;
       transition: background-color 0.3s;
     }
-    button.add {
-      background-color: #28a745; /* Green */
+    button.damage {
+      background-color: #dc3545; /* Red for Damage */
     }
-    button.add:hover {
-      background-color: #218838;
-    }
-    button.add:active {
-      background-color: #1e7e34;
-    }
-    button.subtract {
-      background-color: #dc3545; /* Red */
-    }
-    button.subtract:hover {
+    button.damage:hover {
       background-color: #c82333;
     }
-    button.subtract:active {
+    button.damage:active {
       background-color: #bd2130;
+    }
+    button.heal {
+      background-color: #28a745; /* Green for Heal */
+    }
+    button.heal:hover {
+      background-color: #218838;
+    }
+    button.heal:active {
+      background-color: #1e7e34;
     }
     #result {
       font-size: 18px;
@@ -98,8 +98,8 @@
     <input type="number" id="changeAmount" placeholder="Enter amount to add/subtract">
 
     <div class="buttons">
-      <button class="add" onclick="updateDamage('add')">Add</button>
-      <button class="subtract" onclick="updateDamage('subtract')">Subtract</button>
+      <button class="damage" onclick="updateDamage('add')">Damage</button>
+      <button class="heal" onclick="updateDamage('subtract')">Heal</button>
     </div>
 
     <div id="result"></div>
@@ -127,10 +127,4 @@
 
       // Display the updated damage and update the input field
       document.getElementById('currentDamage').value = updatedDamage;
-      document.getElementById('result').innerText = `Updated Damage: ${updatedDamage}`;
-      document.getElementById('result').style.color = '#28a745'; // Green color for success
-    }
-  </script>
-</body>
-</html>
-
+      document.getElementById('result').inner
